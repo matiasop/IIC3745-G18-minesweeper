@@ -41,7 +41,9 @@ class MinesweeperGame
         exit()
       end
   
-      if /^(help|h)\z/.match(player_choice.downcase) then print_help_message end
+      if player_choice.valid_encoding? 
+        if /^(help|h)\z/.match(player_choice.downcase) then print_help_message end 
+      end
   
       while /^([pfPF]) (\d{1,2}), (\d{1,2})\z/.match(player_choice) == nil
         puts "Introduzca su acción junto a los dos números correspondientes a la fila y a la columna, respectivamente, respetando el formato:"
@@ -55,7 +57,9 @@ class MinesweeperGame
             exit()
         end
 
-        if /^(help|h)\z/.match(player_choice.downcase) then print_help_message end
+        if player_choice.valid_encoding? 
+          if /^(help|h)\z/.match(player_choice.downcase) then print_help_message end 
+        end
       end
       match = /^([pfPF]) (\d{1,2}), (\d{1,2})\z/.match(player_choice)
       row = match[2].to_i
