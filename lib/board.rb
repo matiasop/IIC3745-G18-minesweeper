@@ -75,12 +75,11 @@ class Board
         end
     end
 
+    #Aplica la jugada al bloque elegido
     def apply_action_to_block(action, row, col)
         actual = @board["(#{row}, #{col})"]
         if action == "flag"
-            if !actual.played
-                actual.flagged = !actual.flagged
-            end
+            actual.flagged = !actual.flagged
         else
             if actual.bomb 
                 return false
