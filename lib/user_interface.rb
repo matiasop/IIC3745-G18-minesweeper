@@ -1,7 +1,7 @@
 # Clase estática
 class UserInterface
+    # Receive parameters as ARGV, processes it and send it as output
     def self.initial_choices(args)
-
         return {"n_rows" => [[20, args[0].to_i].min, 8].max, "n_cols" => [[20, args[1].to_i].min, 8].max, "bomb_spawn_rate" => [[1.0, args[2].to_f].min, 0.0].max}
     end
 
