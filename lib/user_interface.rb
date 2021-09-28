@@ -29,7 +29,8 @@ class UserInterface
   end
 
   def self.receive_command
-    puts 'Introduzca su acción junto a los dos números correspondientes a la fila y a la columna, respectivamente, respetando el formato:'
+    puts "Introduzca su acción junto a los dos números correspondientes a la fila y a la columna, respectivamente, \
+respetando el formato:"
     puts '<action> <row> <column>'
     puts 'Números mayores al tamaño del tablero serán truncados al valor máximo respectivo de fila o columna'
     puts
