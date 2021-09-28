@@ -35,7 +35,7 @@ respetando el formato:"
   end
 
   def self.receive_command
-    self.show_instructions
+    show_instructions
     player_choice = $stdin.gets.chomp.split
     if player_choice[0] == 'exit'
       puts '¡Gracias por jugar!'
