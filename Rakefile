@@ -3,7 +3,7 @@ require 'rubocop/rake_task'
 task default: %w[lint test]
 
 task :test do
-  ruby 'test/example.rb'
+  ruby 'test/board_block_test.rb'
 end
 
 RuboCop::RakeTask.new(:lint) do |task|
