@@ -15,9 +15,7 @@ class UserInterface
   end
 
   def self.show_results(board, win)
-    puts
-    puts 'A continuación se muestra el tablero completamente descubierto'
-    puts
+    puts "\nA continuación se muestra el tablero completamente descubierto\n\n"
     board.print_hidden_board
     puts
     if win
