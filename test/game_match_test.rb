@@ -35,4 +35,12 @@ class GameMatchTest < Test::Unit::TestCase
     game.do_match('play 1 1')
     assert_true game.game_over
   end
+
+  def test_wrong_coordinates
+    board = Board.new(8, 8, 0.5)
+    board.populate_blocks
+    game = GameMatch.new(board)
+    game.play_turn('flag -1 -1')
+    assert_false board.board['(0, 0)'].flagged
+  end
 end

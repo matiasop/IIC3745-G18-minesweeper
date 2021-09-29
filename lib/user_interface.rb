@@ -43,4 +43,9 @@ respetando el formato:"
     end
     { 'action' => player_choice[0], 'row' => player_choice[1].to_i - 1, 'col' => player_choice[2].to_i - 1 }
   end
+
+  def self.invalid_coordinates
+    puts 'Pusiste coordenadas inválidas.'
+    show_instructions
+  end
 end

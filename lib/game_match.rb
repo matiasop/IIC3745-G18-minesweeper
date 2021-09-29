@@ -5,7 +5,6 @@ require_relative 'board'
 
 # Manages game loop and win condition
 class GameMatch
-
   attr_reader :win, :game_over
 
   def initialize(match_board)
@@ -14,14 +13,18 @@ class GameMatch
     @win = false
   end
 
-  def play_turn(player_choice)
-    command = UserInterface.receive_command(player_choice)
+  def turn_logic(command)
     result = @match_board.apply_action_to_block(command['action'], command['row'], command['col'])
     if !result
       @game_over = true
     elsif @match_board.played_blocks == @match_board.win_condition
       @win = true
     end
+  end
+
+  def play_turn(player_choice)
+    command = UserInterface.receive_command(player_choice)
+    turn_logic(command)
   end
 
   def do_match(player_choice = '')
