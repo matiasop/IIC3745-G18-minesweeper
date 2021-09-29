@@ -13,6 +13,13 @@ class GameMatch
     @win = false
   end
 
+  def valid_coordinates?(command)
+    return false if command['row'].negative? || command['row'] > @match_board.n_rows
+    return false if command['col'].negative? || command['col'] > @match_board.n_cols
+
+    true
+  end
+
   def turn_logic(command)
     result = @match_board.apply_action_to_block(command['action'], command['row'], command['col'])
     if !result
@@ -24,7 +31,11 @@ class GameMatch
 
   def play_turn(player_choice)
     command = UserInterface.receive_command(player_choice)
-    turn_logic(command)
+    if valid_coordinates?(command)
+      turn_logic(command)
+    else
+      UserInterface.invalid_coordinates
+    end
   end
 
   def do_match(player_choice = '')
