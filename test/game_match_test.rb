@@ -82,24 +82,33 @@ class GameMatchTest < Test::Unit::TestCase
     assert_false board.board['(0, 0)'].flagged
   end
 
-  def test_valid_action_play
+  def test_valid_action
     board = Board.new(8, 8, 0.0)
     board.populate_blocks
     game = GameMatch.new(board)
     assert_true game.valid_action?('play')
   end
 
-  def test_valid_action_flag
+  def test_empty_action
     board = Board.new(8, 8, 0.0)
     board.populate_blocks
     game = GameMatch.new(board)
-    assert_true game.valid_action?('flag')
+    assert_false game.valid_action?('')
   end
 
-  def test_valid_action_exit
-    board = Board.new(8, 8, 0.0)
+  def test_string_coordinates
+    board = Board.new(8, 8, 0.5)
     board.populate_blocks
     game = GameMatch.new(board)
-    assert_true game.valid_action?('exit')
+    game.play_turn('play a b')
+    assert board.played_blocks.zero?
+  end
+
+  def test_float_coordinates
+    board = Board.new(8, 8, 0.5)
+    board.populate_blocks
+    game = GameMatch.new(board)
+    game.play_turn('play 1.5 1.4')
+    assert board.played_blocks.zero?
   end
 end

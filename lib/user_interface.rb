@@ -41,7 +41,19 @@ respetando el formato:"
       puts '¡Gracias por jugar!'
       exit
     end
+    get_action(player_choice)
+  end
+
+  def self.get_action(player_choice)
+    if valid_int(player_choice[1]).nil? || valid_int(player_choice[2]).nil?
+      return { 'action' => player_choice[0], 'row' => -1, 'col' => -1 }
+    end
+
     { 'action' => player_choice[0], 'row' => player_choice[1].to_i - 1, 'col' => player_choice[2].to_i - 1 }
+  end
+
+  def self.valid_int(str)
+    str =~ /^\d+$/
   end
 
   def self.invalid_coordinates
