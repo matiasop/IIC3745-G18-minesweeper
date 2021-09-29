@@ -18,7 +18,7 @@ Para iniciar el juego se debe correr el comando `ruby lib/main.py [filas] [colum
 Una vez que se inicia el juego el usuario debe escribir una acción en la consola. Existen 3 tipos de acciones:
 
 1. `play [fila] [columna]`: descubrir lo que está en una casilla. Se pierde el juego si se descubre una bomba.
-2. `flag [fila] [columna]`: marca una casilla con una bandera. Sirve para marcar los lugares en los que el usuario cree que hay una bomba.No se puede hacer `play` en una casilla marcada con una bandera. Se puede borrar la bandera si se usa `flag` en una casilla que tenga una.
+2. `flag [fila] [columna]`: marca una casilla con una bandera. Sirve para marcar los lugares en los que el usuario cree que hay una bomba. No se puede hacer `play` en una casilla marcada con una bandera. Se puede borrar la bandera si se usa `flag` en una casilla que tenga una.
 3. `exit`: se sale del juego.
 
 ### Cómo ganar
