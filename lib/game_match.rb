@@ -3,7 +3,7 @@
 require_relative 'user_interface'
 require_relative 'board'
 
-# Manages turns and win condition
+# Manages game loop and win condition
 class GameMatch
   def initialize(match_board)
     @match_board = match_board
