@@ -34,13 +34,12 @@ respetando el formato:"
     puts
   end
 
-  def self.receive_command
+  def self.receive_command(player_choice)
     show_instructions
-    player_choice = $stdin.gets.chomp.split
+    player_choice = player_choice == '' ? $stdin.gets.chomp.split : player_choice.chomp.split
     if player_choice[0] == 'exit'
       puts '¡Gracias por jugar!'
-      player_choice.push(0)
-      player_choice.push(0)
+      exit
     end
     { 'action' => player_choice[0], 'row' => player_choice[1].to_i - 1, 'col' => player_choice[2].to_i - 1 }
   end
