@@ -43,4 +43,39 @@ class GameMatchTest < Test::Unit::TestCase
     game.play_turn('flag -1 -1')
     assert_false board.board['(0, 0)'].flagged
   end
+
+  def test_invalid_coordinates_low_row
+    board = Board.new(8, 8, 0.5)
+    board.populate_blocks
+    game = GameMatch.new(board)
+    assert_false game.valid_coordinates?({"action"=>"play", "row"=>-1, "col"=>3})
+  end
+
+  def test_invalid_coordinates_high_row
+    board = Board.new(8, 8, 0.5)
+    board.populate_blocks
+    game = GameMatch.new(board)
+    assert_false game.valid_coordinates?({"action"=>"play", "row"=>10, "col"=>3})
+  end
+
+  def test_invalid_coordinates_low_col
+    board = Board.new(8, 8, 0.5)
+    board.populate_blocks
+    game = GameMatch.new(board)
+    assert_false game.valid_coordinates?({"action"=>"play", "row"=>3, "col"=>-1})
+  end
+
+  def test_invalid_coordinates_high_col
+    board = Board.new(8, 8, 0.5)
+    board.populate_blocks
+    game = GameMatch.new(board)
+    assert_false game.valid_coordinates?({"action"=>"play", "row"=>3, "col"=>8})
+  end
+
+  def test_valid_coordinates
+    board = Board.new(8, 8, 0.5)
+    board.populate_blocks
+    game = GameMatch.new(board)
+    assert_true game.valid_coordinates?({"action"=>"play", "row"=>3, "col"=>4})
+  end
 end

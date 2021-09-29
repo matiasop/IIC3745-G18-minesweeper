@@ -14,8 +14,8 @@ class GameMatch
   end
 
   def valid_coordinates?(command)
-    return false if command['row'].negative? || command['row'] > @match_board.n_rows
-    return false if command['col'].negative? || command['col'] > @match_board.n_cols
+    return false if command['row'].negative? || command['row'] > @match_board.n_rows - 1
+    return false if command['col'].negative? || command['col'] > @match_board.n_cols - 1
 
     true
   end
