@@ -48,4 +48,9 @@ respetando el formato:"
     puts 'Pusiste coordenadas inválidas.'
     show_instructions
   end
+
+  def self.invalid_action
+    puts 'Pusiste una acción invalida.'
+    show_instructions
+  end
 end

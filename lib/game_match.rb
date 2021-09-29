@@ -20,6 +20,10 @@ class GameMatch
     true
   end
 
+  def valid_action?(action)
+    %w[play flag exit].include? action
+  end
+
   def turn_logic(command)
     result = @match_board.apply_action_to_block(command['action'], command['row'], command['col'])
     if !result
@@ -31,10 +35,14 @@ class GameMatch
 
   def play_turn(player_choice)
     command = UserInterface.receive_command(player_choice)
-    if valid_coordinates?(command)
-      turn_logic(command)
+    if valid_action?(command['action'])
+      if valid_coordinates?(command)
+        turn_logic(command)
+      else
+        UserInterface.invalid_coordinates
+      end
     else
-      UserInterface.invalid_coordinates
+      UserInterface.invalid_action
     end
   end
 
