@@ -5,6 +5,9 @@ require_relative 'board'
 
 # Manages game loop and win condition
 class GameMatch
+
+  attr_reader :win, :game_over
+
   def initialize(match_board)
     @match_board = match_board
     @game_over = false
