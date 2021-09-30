@@ -2,6 +2,7 @@
 
 # Clase que representa cada bloque del tablero y se encarga de su lógica
 class BoardBlock
+  # Using cardinal coordinates
   NEIGHBORS = %w[N NE E SE S SW W NW].freeze
   attr_accessor :parent_board, :n_contiguous_bombs, :contiguous_zero_blocks, :played, :flagged, :contiguous
   attr_reader :bomb
@@ -13,7 +14,6 @@ class BoardBlock
     @contiguous_zero_blocks = []
     @played = false
     @flagged = false
-    # Using cardinal coordinates
     @contiguous = NEIGHBORS.each_with_object({}) do |key, hash|
       hash[key] = nil
     end
@@ -33,13 +33,12 @@ class BoardBlock
 
   def play_block(board)
     return if @played || @flagged
+    return unless @n_contiguous_bombs.zero?
 
     @played = true
     board.played_blocks += 1
-    if @n_contiguous_bombs.zero?
-      @contiguous.each do |_key, value|
-        value.play_block(board)
-      end
+    @contiguous.each do |_key, value|
+      value.play_block(board)
     end
   end
 end
