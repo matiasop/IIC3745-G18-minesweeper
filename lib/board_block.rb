@@ -1,5 +1,5 @@
 class BoardBlock
-
+    NEIGHBORS = %w[N NE E SE S SW W NW]
     attr_accessor :parent_board, :n_contiguous_bombs, :contiguous_zero_blocks, :played, :flagged, :contiguous
     attr_reader :bomb
 
@@ -11,16 +11,7 @@ class BoardBlock
         @played = false
         @flagged = false
         #Using cardinal coordinates
-        @contiguous = {
-            "N" => nil,
-            "NE" => nil,
-            "E" => nil,
-            "SE" => nil,
-            "S" => nil,
-            "SW" => nil,
-            "W" => nil,
-            "NW" => nil,
-        } 
+        @contiguous = NEIGHBORS.inject({}){|hash, key| hash[key] = nil; hash}
     end
 
     def count_contiguous_bombs
