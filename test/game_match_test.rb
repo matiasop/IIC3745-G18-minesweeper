@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'test_helper'
 require_relative '../lib/game_match'
 require_relative '../lib/board'
 require 'test/unit'
