@@ -51,7 +51,9 @@ class BoardBlock
         board.played_blocks += 1
         if @n_contiguous_bombs == 0
             @contiguous.each do |key, value|
-                value.play_block(board)
+                if !value.nil?
+                    value.play_block(board)
+                end
             end 
         end
     end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative 'board_block'
+
 # Board initialized board and applies moves to blocks
 class Board
   TEST_BOMBS = [[0, 0], [1, 1], [2, 2], [2, 3]].freeze
