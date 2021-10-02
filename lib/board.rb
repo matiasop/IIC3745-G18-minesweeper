@@ -42,18 +42,22 @@ class Board
       @n_cols.times do |col|
         mark_up_and_down_cells_contiguous(row, col)
         mark_sides_cells_contiguous(row, col)
-        mark_up_diagonal_cells_contiguous(row, col) if row.positive?
-        mark_down_diagonal_cells_contiguous(row, col) if row < @n_rows - 1
+        mark_up_diagonal_cells_contiguous(row, col)
+        mark_down_diagonal_cells_contiguous(row, col)
       end
     end
   end
 
   def mark_up_diagonal_cells_contiguous(row, col)
+    return unless row.positive?
+
     @board["(#{row}, #{col})"].contiguous['NW'] = @board["(#{row - 1}, #{col - 1})"] if col.positive?
     @board["(#{row}, #{col})"].contiguous['NE'] = @board["(#{row - 1}, #{col + 1})"] if col < @n_cols - 1
   end
 
   def mark_down_diagonal_cells_contiguous(row, col)
+    return unless row < @n_rows - 1
+
     @board["(#{row}, #{col})"].contiguous['SW'] = @board["(#{row + 1}, #{col - 1})"] if col.positive?
     @board["(#{row}, #{col})"].contiguous['SE'] = @board["(#{row + 1}, #{col + 1})"] if col < @n_cols - 1
   end
@@ -75,7 +79,6 @@ class Board
     end
   end
 
-  # Aplica la jugada al bloque elegido
   def apply_action_to_block(action, row, col)
     actual = @board["(#{row}, #{col})"]
     if action == 'flag'
