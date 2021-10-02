@@ -6,6 +6,10 @@ task default: %w[lint test]
 task :test do
   ruby 'test/game_match_test.rb'
   ruby 'test/board_block_test.rb'
+  ruby 'test/board_actions_test.rb'
+  ruby 'test/board_creation_test.rb'
+  ruby 'test/mark_diagonal_cells_test.rb'
+  ruby 'test/mark_nesw_cells_test.rb'
 end
 
 RuboCop::RakeTask.new(:lint) do |task|
