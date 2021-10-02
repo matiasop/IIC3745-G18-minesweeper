@@ -3,7 +3,7 @@ require_relative 'board_block'
 class Board 
 
     attr_accessor :win_condition, :played_blocks
-    attr_reader :n_rows, :n_cols, :bomb_spawn_rate
+    attr_reader :n_rows, :n_cols, :bomb_spawn_rate, :board
 
 
     def initialize(n_rows, n_cols, bomb_spawn_rate)
