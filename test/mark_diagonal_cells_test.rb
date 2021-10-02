@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
+require_relative 'test_helper'
 require_relative '../lib/board'
 require 'test/unit'
 
 # Class to Test marking diagonal neighbors in board
-class MarkDiagonalCellsTest < Test::Unit::TestCase
+class BoardTest < Test::Unit::TestCase
   def setup
     @board = Board.new(8, 8, 0)
     @board.populate_blocks
