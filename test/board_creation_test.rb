@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
+require_relative 'test_helper'
 require_relative '../lib/board'
 require 'test/unit'
 
 # Class to Test BoardCreation Methods
-class BoardCreationTest < Test::Unit::TestCase
+class BoardTest < Test::Unit::TestCase
   def test_block_and_bomb_spawn_spawning_bomb
     board = Board.new(8, 8, 1)
     board.block_and_bomb_spawn(0, 0)
