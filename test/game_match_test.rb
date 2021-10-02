@@ -5,6 +5,7 @@ require_relative '../lib/game_match'
 require_relative '../lib/board'
 require 'test/unit'
 
+# Class to Test game win conditions user actions
 class GameMatchTest < Test::Unit::TestCase
   def test_flag_once
     board = Board.new(8, 8, 0.5)
