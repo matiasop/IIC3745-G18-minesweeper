@@ -1,6 +1,5 @@
-# frozen_string_literal: true
-
 require_relative 'board_block'
+
 # Board initialized board and applies moves to blocks
 class Board
   attr_accessor :win_condition, :played_blocks
