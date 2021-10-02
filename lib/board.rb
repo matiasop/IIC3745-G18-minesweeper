@@ -96,7 +96,7 @@ class Board
   def apply_action_to_block(action, row, col)
     actual = @board["(#{row}, #{col})"]
     if action == 'flag'
-      actual.flagged = !actual.flagged
+      actual.flagged = !actual.flagged unless actual.played
     else
       return false if actual.bomb
 
