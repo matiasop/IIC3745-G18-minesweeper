@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'board_printer'
+
 # Clase estática
 class UserInterface
   # Receive parameters as ARGV, processes it and send it as output
@@ -10,13 +12,13 @@ class UserInterface
 
   def self.show_board(board)
     puts
-    board.print_ingame_board
+    BoardPrinter.print_ingame_board(board)
     puts
   end
 
   def self.show_results(board, win)
     puts "\nA continuación se muestra el tablero completamente descubierto\n\n"
-    board.print_hidden_board
+    BoardPrinter.print_hidden_board(board)
     puts
     if win
       puts '¡Felicidades! ¡Has ganado!'
