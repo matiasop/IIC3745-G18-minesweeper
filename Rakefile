@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rubocop/rake_task'
 require 'rake/testtask'
 
@@ -18,8 +20,8 @@ RuboCop::RakeTask.new(:lint) do |task|
 end
 
 # Run simplecov for all files
-Rake::TestTask.new("test:all") do |t|
-  t.libs = ["lib"]
+Rake::TestTask.new('test:all') do |t|
+  t.libs = ['lib']
   t.warning = true
   t.test_files = FileList['test/**/*_test.rb']
 end

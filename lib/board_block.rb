@@ -33,13 +33,13 @@ class BoardBlock
 
   def play_block(board)
     return if @played || @flagged
+
     @played = true
     board.played_blocks += 1
     return unless @n_contiguous_bombs.zero?
+
     @contiguous.each do |_key, value|
-      if !value.nil?
-        value.play_block(board)
-      end
+      value&.play_block(board)
     end
   end
 end
