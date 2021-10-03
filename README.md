@@ -4,6 +4,9 @@
 
 Para desarrollar este proyecto se usó [este repositorio como base](https://github.com/jakebruemmer/ruby-minesweeper-cli).
 
+## Tests
+Para correr los tests y generar el archivo de coverage de `simplecov` se debe correr: `rake test:all`.
+
 ## Aclaraciones
 No se hicieron tests para el archivo `user_interface.rb` porque según el enunciado no era necesario testear las clases que se encargan de la vista.
 
