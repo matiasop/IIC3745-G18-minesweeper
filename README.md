@@ -4,6 +4,9 @@
 
 Para desarrollar este proyecto se usó [este repositorio como base](https://github.com/jakebruemmer/ruby-minesweeper-cli).
 
+## Tests
+Para correr los tests y generar el archivo de coverage de `simplecov` se debe correr: `rake test:all`.
+
 ## Aclaraciones
 No se hicieron tests para los archivos `user_interface.rb` ni `board_printer.rb` porque según el enunciado no era necesario testear las clases que se encargan de la vista ni del input del usuario.
 
@@ -25,3 +28,10 @@ Una vez que se inicia el juego el usuario debe escribir una acción en la consol
 Se gana si el jugador descubre todas las casillas que no tienen minas.
 
 Se pierde si el jugador descubre alguna casilla con una mina.
+
+## Integrantes
+- Felipe Campbell
+- Tomás Flores
+- Cristian Hinostroza
+- Matías Ovalle
+- Alejandra Uribe

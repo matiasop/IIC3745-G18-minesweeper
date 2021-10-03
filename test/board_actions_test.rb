@@ -28,25 +28,25 @@ class ExampleTest < Test::Unit::TestCase
     @board.apply_action_to_block('play', 0, 1)
     assert_equal(@board.board['(0, 1)'].played, true)
   end
- 
+
   def test_play_action_flagged_position
     @board.do_blocks_counting
     @board.apply_action_to_block('flag', 0, 1)
     @board.apply_action_to_block('play', 0, 1)
     assert_equal(@board.board['(0, 1)'].played, false)
   end
- 
+
   def test_play_action_bomb_position
     @board.do_blocks_counting
     assert_equal(@board.apply_action_to_block('play', 0, 0), false)
   end
- 
+
   def test_flag_action_empty_position
     @board.do_blocks_counting
     @board.apply_action_to_block('flag', 0, 1)
     assert_equal(@board.board['(0, 1)'].flagged, true)
   end
- 
+
   def test_flag_action_played_position
     @board.do_blocks_counting
     @board.apply_action_to_block('play', 0, 1)
