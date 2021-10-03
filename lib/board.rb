@@ -4,6 +4,7 @@ require_relative 'board_block'
 
 # Board initialized board and applies moves to blocks
 class Board
+  TEST_BOMBS = [[0, 0], [1, 1], [2, 2], [2, 3]].freeze
   attr_accessor :win_condition, :played_blocks
   attr_reader :n_rows, :n_cols, :board, :bomb_spawn_rate
 
@@ -24,6 +25,19 @@ class Board
       end
     end
     @win_condition = (n_rows * n_cols) - total_bombs
+  end
+
+  def controlled_populate_blocks
+    @win_condition = (n_rows * n_cols) - TEST_BOMBS.length
+    @n_rows.times do |row|
+      @n_cols.times do |col|
+        @board["(#{row}, #{col})"] = if TEST_BOMBS.include? [row, col]
+                                       BoardBlock.new(self, true)
+                                     else
+                                       BoardBlock.new(self, false)
+                                     end
+      end
+    end
   end
 
   def block_and_bomb_spawn(row, col)
@@ -83,7 +97,7 @@ class Board
   def apply_action_to_block(action, row, col)
     actual = @board["(#{row}, #{col})"]
     if action == 'flag'
-      actual.flagged = !actual.flagged
+      actual.flagged = !actual.flagged unless actual.played
     else
       return false if actual.bomb
 
