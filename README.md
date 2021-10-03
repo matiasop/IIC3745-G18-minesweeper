@@ -25,3 +25,10 @@ Una vez que se inicia el juego el usuario debe escribir una acción en la consol
 Se gana si el jugador descubre todas las casillas que no tienen minas.
 
 Se pierde si el jugador descubre alguna casilla con una mina.
+
+## Integrantes
+- Felipe Campbell
+- Tomás Flores
+- Cristian Hinostroza
+- Matías Ovalle
+- Alejandra Uribe
