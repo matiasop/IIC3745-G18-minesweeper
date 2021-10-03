@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'board_printer'
+
 # Clase estática
 class UserInterface
   # Receive parameters as ARGV, processes it and send it as output
@@ -10,13 +12,13 @@ class UserInterface
 
   def self.show_board(board)
     puts
-    board.print_ingame_board
+    BoardPrinter.print_ingame_board(board)
     puts
   end
 
   def self.show_results(board, win)
     puts "\nA continuación se muestra el tablero completamente descubierto\n\n"
-    board.print_hidden_board
+    BoardPrinter.print_hidden_board(board)
     puts
     if win
       puts '¡Felicidades! ¡Has ganado!'
@@ -34,14 +36,35 @@ respetando el formato:"
     puts
   end
 
-  def self.receive_command
+  def self.receive_command(player_choice)
     show_instructions
-    player_choice = $stdin.gets.chomp.split
+    player_choice = player_choice == '' ? $stdin.gets.chomp.split : player_choice.chomp.split
     if player_choice[0] == 'exit'
       puts '¡Gracias por jugar!'
-      player_choice.push(0)
-      player_choice.push(0)
+      exit
     end
+    get_action(player_choice)
+  end
+
+  def self.get_action(player_choice)
+    if valid_int(player_choice[1]).nil? || valid_int(player_choice[2]).nil?
+      return { 'action' => player_choice[0], 'row' => -1, 'col' => -1 }
+    end
+
     { 'action' => player_choice[0], 'row' => player_choice[1].to_i - 1, 'col' => player_choice[2].to_i - 1 }
+  end
+
+  def self.valid_int(str)
+    str =~ /^\d+$/
+  end
+
+  def self.invalid_coordinates
+    puts 'Pusiste coordenadas inválidas.'
+    show_instructions
+  end
+
+  def self.invalid_action
+    puts 'Pusiste una acción invalida.'
+    show_instructions
   end
 end
